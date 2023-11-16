@@ -7,15 +7,17 @@ public class Icecream {
     int sCount = 0; int sPrice = 300;
     int mixCount = 0; int mixPrice = 175;
     static int orderCount = 0;
+    int pArray[] = new int[]{vPrice, cPrice, mPrice, sPrice, mixPrice };
+    String nArray[] = new String[]{"Vanilla", "Chocolate", "Mint", "Strawberry", "Mixberry"};
 
     public Icecream(){
         System.out.println("Welcome to Icecream World Menu!");
         System.out.println("_________________________________");
-        System.out.println("1. Vanilla ------------------150");
-        System.out.println("2. Chocolate ----------------200");
-        System.out.println("3. Mint ---------------------250");
-        System.out.println("4. Strawberry ---------------300");
-        System.out.println("5. Mixberry -----------------175");
+        System.out.println("1. Vanilla -----------------$150");
+        System.out.println("2. Chocolate ---------------$200");
+        System.out.println("3. Mint --------------------$250");
+        System.out.println("4. Strawberry --------------$300");
+        System.out.println("5. Mixberry ----------------$175");
         System.out.println("_________________________________");
         Scanner in = new Scanner(System.in);
 
@@ -36,15 +38,24 @@ public class Icecream {
     }
 
     public void generateBill() {
+        int cArray[] = new int[]{vCount, cCount, mCount, sCount, mixCount };
+        int lnCount = 1;
+
         System.out.println("==========================================================");
         System.out.println("Sl.no      Flavor      Price       Quantity      Amount");
-        System.out.println("  1        Vanilla      " + vPrice + "           " + vCount + "             " + vCount*vPrice);
-        System.out.println("  2        Chocolate    " + cPrice + "           " + cCount + "             " + cCount*cPrice);
-        System.out.println("  3        Mint         " + mPrice + "           " + mCount + "             " + mCount*mPrice);
-        System.out.println("  4        Strawberry   " + sPrice + "           " + sCount + "             " + sCount*sPrice);
-        System.out.println("  5        Mixberry     " + mixPrice + "           " + mixCount + "             " + mixCount*mixPrice);
+        for (int i = 0; i < 5; i++) {
+            if (cArray[i] != 0) {
+                System.out.println(" "+lnCount+"        "+nArray[i]+"      " + pArray[i] + "           " + cArray[i] + "            $" + cArray[i]*pArray[i]);
+                lnCount++;
+            }
+        }
+//        System.out.println("  1        Vanilla      " + vPrice + "           " + vCount + "            $" + vCount*vPrice);
+//        System.out.println("  2        Chocolate    " + cPrice + "           " + cCount + "            $" + cCount*cPrice);
+//        System.out.println("  3        Mint         " + mPrice + "           " + mCount + "            $" + mCount*mPrice);
+//        System.out.println("  4        Strawberry   " + sPrice + "           " + sCount + "            $" + sCount*sPrice);
+//        System.out.println("  5        Mixberry     " + mixPrice + "           " + mixCount + "            $" + mixCount*mixPrice);
         System.out.println("----------------------------------------------------------");
-        System.out.println("Your total amount is:                 " + totalQuantity() + "             " + totalPrice());
+        System.out.println("Your total amount is:                 " + totalQuantity() + "            $" + totalPrice());
         System.out.println("==========================================================");
     }
 
